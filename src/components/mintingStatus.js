@@ -18,7 +18,7 @@ export default function MintingStatus(){
 
   return(
     <div>
-      {supplyState.freeMinting > 0 ? <div className="title">{1000 - supplyState.supply} freemints left</div> : <div className="title">{5000 - supplyState.supply} fremints left</div>}
+      {supplyState.freeMinting > 0 ? <div className="title">{1000 - supplyState.supply} freemints left</div> : <div className="title">{5000 - supplyState.supply} agents left</div>}
     </div>
   )
 }
