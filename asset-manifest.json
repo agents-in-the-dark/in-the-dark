@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/in-the-dark/static/css/main.435bb8fb.css",
-    "main.js": "/in-the-dark/static/js/main.0090949d.js",
+    "main.css": "/in-the-dark/static/css/main.a8622d23.css",
+    "main.js": "/in-the-dark/static/js/main.347816e6.js",
     "static/media/heroBanner.svg": "/in-the-dark/static/media/heroBanner.9d93c27052b83459f96fb968335f3e0a.svg",
     "index.html": "/in-the-dark/index.html",
-    "main.435bb8fb.css.map": "/in-the-dark/static/css/main.435bb8fb.css.map",
-    "main.0090949d.js.map": "/in-the-dark/static/js/main.0090949d.js.map"
+    "main.a8622d23.css.map": "/in-the-dark/static/css/main.a8622d23.css.map",
+    "main.347816e6.js.map": "/in-the-dark/static/js/main.347816e6.js.map"
   },
   "entrypoints": [
-    "static/css/main.435bb8fb.css",
-    "static/js/main.0090949d.js"
+    "static/css/main.a8622d23.css",
+    "static/js/main.347816e6.js"
   ]
 }
