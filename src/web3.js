@@ -23,7 +23,7 @@ export default class Web3Module{
 
   // minting variables
   this.mintsLeft = null;
-  this.supplyLeft = null;
+  this.supply = null;
   this.freeMinting = null;
    
   // get contact instance
@@ -48,16 +48,20 @@ export default class Web3Module{
    
   // --- get minting variables
   // ninjacks left
-  const numberMinted = await this.contract.methods.totalSupply.call();
-  console.log(numberMinted);
-  if(numberMinted >= 1000){this.freeMinting = true;}else{this.freeMinting = false}
-  console.log(this.freeMinting);
+  const numberMinted = await this.contract.methods.totalSupply().call();
+  this.supply = numberMinted;
+  if(numberMinted >= 1000){this.freeMinting = false;}else{this.freeMinting = true}
  }
   
- async mint(num){
+ async mint(num, ethToSend){
   console.log("mint called");
-  const receipt = await this.contract.methods.mint(num).send({from: this.currentAccount, value: 0});
+  const receipt = await this.contract.methods.mint(num).send({from: this.currentAccount, value: ethToSend});
   console.log(receipt);
   console.log("successfully minted");
+  alert('Successfully Minted');
+ }
+  
+ async getMintsAllowed(){
+  return await this.contract.methods.mintsLeft().call({from: this.currentAccount});
  }
 }
