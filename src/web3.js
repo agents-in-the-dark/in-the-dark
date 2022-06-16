@@ -1,6 +1,5 @@
 import Web3 from "web3/dist/web3.min";
-const contractJson = require('./Ninjacks.json');
-
+const contractAbi =  require('./contractAbi');
 
 
 export default class Web3Module{
@@ -42,20 +41,17 @@ export default class Web3Module{
  }
 
  async getContractIntance(){
-  // get network id
-  const id = await this.web3.eth.net.getId();
-  // get network
-  const deployedNetwork = contractJson.networks[id];
   // set contract instance
-  const contract = await new this.web3.eth.Contract(contractJson.abi, deployedNetwork.address);
+  const contract = await new this.web3.eth.Contract(contractAbi, '0x9D4d4A3695944cC68c796B9044cD3dE9fEebFcaf');
   this.contract = contract;
+  console.log(contract);
    
   // --- get minting variables
-  // allowed mints left
-  this.mintsLeft = await this.contract.methods.mintsLeft().call();
   // ninjacks left
-  const numberMinted = await this.contract.methods.totalSupply().call();
-  this.supplyLeft = 5000 - numberMinted;
+  const numberMinted = await this.contract.methods.totalSupply.call();
+  console.log(numberMinted);
+  if(numberMinted >= 1000){this.freeMinting = true;}else{this.freeMinting = false}
+  console.log(this.freeMinting);
  }
   
  async mint(num){
