@@ -1,5 +1,7 @@
 import MintingStatus from "./mintingStatus";
 
+console.log('v1034');
+
 function Title() {
  return (  
   <div className="fillWidth flex flexColumn flexAlignCenter">

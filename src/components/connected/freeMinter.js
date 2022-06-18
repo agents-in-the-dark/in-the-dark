@@ -7,12 +7,16 @@ export default function FreeMinter(prop){
   useEffect(()=>{
     if(prop.status.mintsAllowed < 1){setMintAble(false)}
   }, []);
+   
+  const requestMint = async function(){
+    await web3Module.freeMint();
+  }
 
   return(
     <div className="fillWidth flex flexColumn flexAlignCenter flexJustifyCenter">
       <div style={{height: "2em"}}></div>
-      <button className={mintAble ? "whiteButton" : "whiteButtonDisabled"} onClick={web3Module.mint(1, 0)}>Mint Agent</button>
-      {mintAble ? null : <div>no more mints alowed</div>}
+      {mintAble ? <button className="whiteButton" onClick={requestMint}>Mint Agent</button> : <button className="whiteButtonDisabled">Mint Agent</button> }
+      {mintAble ? null : <div>no more mints allowed</div>}
     </div>
   )
 }

@@ -25,13 +25,13 @@ function ConnectedRoute() {
   load()
  },[]);
   
- useEffect(()=>{console.log(supplyStatus)}, [supplyStatus])
+ useEffect(()=>{console.log(supplyStatus.freeMinting)}, [supplyStatus])
 
   
 
  return (
   <div>
-    {supplyStatus.freeMinting ? <FreeMinter status={supplyStatus}/> : <Minter status={supplyStatus}/>}
+    <Minter status={supplyStatus}/>
   </div>
  );
 }

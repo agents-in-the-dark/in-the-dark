@@ -9,7 +9,7 @@ export default function MintingStatus(){
     const loadSupplyState = async function(){
       if(web3Module != null){
         await web3Module.getContractIntance()
-        setSupplyState({supply: web3Module.supply, freeMinting: true})
+        setSupplyState({supply: web3Module.supply, freeMinting: false})
       }
     }
     loadSupplyState();

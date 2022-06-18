@@ -5,20 +5,31 @@ const cost = 5000000000000000;
 const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
 function Minter(prop) {
+  console.log('render mint counter'); 
   const [count, setCount] = useState(1); 
   const [able, setAble] = useState(true);
   const [max, setMax] = useState(10);
     
   useEffect(()=>{
-    // --- get var
-    const mintAllowed = prop.status.mintAllowed;
-    const supplyLeft = 5000 - prop.status.supply;
-    // calculate mints Allowed
-    const currentMintsAllowed = clamp(supplyLeft, 0, mintAllowed)
-    
-    // handle states
-    setMax(currentMintsAllowed);
-    setAble(currentMintsAllowed > 0)
+    const load = async function(){
+      await web3Module.getContractIntance();
+       
+      // get max mints
+      const allowedMints = await web3Module.contract.methods.mintsLeft().call({from: web3Module.currentAccount});
+      const currentMaxMints = clamp(web3Module.supply, 0, allowedMints);
+      console.log(currentMaxMints);
+       
+      if(currentMaxMints < 1){setAble(false)}else{setMax(currentMaxMints)}
+    }
+    load()
+    // // --- get var
+    // const mintAllowed = prop.status.mintAllowed;
+    // const supplyLeft = 5000 - prop.status.supply;
+    // console.log(mintAllowed, supplyLeft);
+    // // calculate mints Allowed
+    // const currentMintsAllowed = clamp(supplyLeft, 0, mintAllowed)
+    // // handle states
+    // setMax(10);
   },[]);
 
   const addCount = function(){

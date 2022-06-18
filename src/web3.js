@@ -60,6 +60,14 @@ export default class Web3Module{
   console.log("successfully minted");
   alert('Successfully Minted');
  }
+
+ async freeMint(){
+  console.log("mint called");
+  const receipt = await this.contract.methods.mint(1).send({from: this.currentAccount});
+  console.log(receipt);
+  console.log("successfully minted");
+  alert('Successfully Minted');
+ }
   
  async getMintsAllowed(){
   return await this.contract.methods.mintsLeft().call({from: this.currentAccount});
